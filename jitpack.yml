@@ -1,4 +1,4 @@
 jdk:
-  - openjdk17.0.6
+  - openjdk17
 before_install:
   - ./scripts/prepareJitpackEnvironment.sh
