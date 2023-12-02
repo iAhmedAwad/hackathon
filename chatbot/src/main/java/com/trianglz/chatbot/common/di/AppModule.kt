@@ -42,13 +42,14 @@ class AppModule {
         builder: OkHttpClient.Builder,
         httpLoggingInterceptor: HttpLoggingInterceptor,
     ): OkHttpClient {
-        val proxy = Proxy(Proxy.Type.HTTP, InetSocketAddress("156.163.110.170",8080))
+        val proxy = Proxy(Proxy.Type.HTTP, InetSocketAddress("156.194.48.168",8888))
 
         return   builder.addNetworkInterceptor(StethoInterceptor())
-            .addInterceptor(httpLoggingInterceptor).proxy(proxy)
-            .callTimeout(15, TimeUnit.SECONDS)
-            .readTimeout(15, TimeUnit.SECONDS)
-            .writeTimeout(15, TimeUnit.SECONDS)
+            .addInterceptor(httpLoggingInterceptor)
+           //.proxy(proxy)
+            .callTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(10, TimeUnit.SECONDS)
+            .writeTimeout(10, TimeUnit.SECONDS)
             .build()
     }
 
@@ -75,6 +76,6 @@ class AppModule {
 
 
     companion object {
-        const val BASEURL = "https://huge-lands-think.loca.lt/"
+        const val BASEURL = "https://4e9d-156-194-48-168.ngrok-free.app/"
     }
 }
