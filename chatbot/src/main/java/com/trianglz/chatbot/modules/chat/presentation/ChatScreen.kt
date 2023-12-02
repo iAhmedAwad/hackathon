@@ -10,14 +10,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.chatbot_sdk.modules.chat.domain.models.enum.SenderType
-import com.example.chatbot_sdk.modules.chat.presentation.models.MessageUIModel
 import com.trianglz.chatbot.modules.chat.presentation.composables.ChatScreenContent
 
 @Composable
@@ -25,17 +23,19 @@ fun ChatScreen(
     viewModel: ChatScreenViewModel = hiltViewModel()
 ) {
 
-//    val viewModel = remember {
-//        ChatScreenViewModel()
-//    }
-
     val chatList = remember {
         derivedStateOf {
             viewModel.chatList
         }
     }
 
-    ChatScreenContent(chatList)
+    val onSendClicked: (String) -> Unit = remember {
+        {
+            viewModel.sendMessage(it)
+        }
+    }
+
+    ChatScreenContent(chatList, onSendClicked = onSendClicked)
 }
 
 
