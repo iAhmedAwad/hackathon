@@ -15,7 +15,7 @@ import javax.inject.Inject
 class ChatBotDataSourceImpl @Inject constructor(private val service: ChatBotService) : ChatBotDataSource {
     override suspend fun sendMessage(message: SendingMessageRequestModel): ChatDataModel {
 
-        delay(2000)
+        //delay(2000)
         //return ChatDataModel(System.identityHashCode(this),"this is the bot response...",SenderType.OTHER)
         return  service.sendMessage(message.message).toData()
     }
