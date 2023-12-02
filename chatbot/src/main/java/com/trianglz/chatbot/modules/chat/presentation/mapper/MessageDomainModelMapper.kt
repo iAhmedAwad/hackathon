@@ -1,9 +1,9 @@
-package com.example.chatbot_sdk.modules.chat.presentation.mapper
+package com.trianglz.chatbot.modules.chat.presentation.mapper
 
-import com.example.chatbot_sdk.modules.chat.domain.models.MessageDomainModel
-import com.example.chatbot_sdk.modules.chat.presentation.models.MessageUIModel
+import com.trianglz.chatbot.modules.chat.domain.models.ChatDomainModel
+import com.trianglz.chatbot.modules.chat.presentation.models.ChatUIModel
 
-fun MessageDomainModel.toUI(): MessageUIModel {
+fun ChatDomainModel.toUI(): ChatUIModel {
 
-    return MessageUIModel(id = id, content = messageContent, type = type)
+    return ChatUIModel(content = message, type = type)
 }
