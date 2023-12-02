@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="type_your_message" />
+<string name="type_your_message">What do you need to ask?</string>
 </resources>
