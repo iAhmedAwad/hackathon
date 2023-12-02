@@ -1,8 +1,12 @@
 package com.trianglz.chatbot.modules.chat.presentation.composables
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -16,7 +20,6 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Shapes
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -34,9 +37,8 @@ import androidx.compose.ui.unit.dp
 import com.trianglz.chatbot.R
 
 @Composable
-fun ChatDetailsActionsItem(onSendClicked: (text: String) -> Unit) {
+fun ChatDetailsActionsItem(onSendClicked: (text: String) -> Unit, primaryColor: () -> Color) {
     var text by rememberSaveable { mutableStateOf("") }
-
     Row(
         modifier = Modifier
             .navigationBarsPadding()
@@ -46,7 +48,8 @@ fun ChatDetailsActionsItem(onSendClicked: (text: String) -> Unit) {
             .padding(
                 horizontal = 20.dp,
                 vertical = 10.dp
-            ),
+            )
+            .border(BorderStroke(1.dp, primaryColor()), shape = MaterialTheme.shapes.medium),
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -54,18 +57,17 @@ fun ChatDetailsActionsItem(onSendClicked: (text: String) -> Unit) {
         ChatOutlineTextField(
             modifier = Modifier
                 .padding(0.dp)
-                .heightIn(min = 38.dp)
+                .heightIn(min = 40.dp)
                 .weight(1f)
                 .background(
                     color = MaterialTheme.colorScheme.primary,
-                    shape = Shapes().medium
+                    shape = MaterialTheme.shapes.medium
                 )
-                .clip(Shapes().medium),
+                .clip(MaterialTheme.shapes.medium),
             value = text,
             textStyle = MaterialTheme.typography.bodyMedium,
             onValueChange = {
                 text = it
-
             },
 
             maxLines = 3,
@@ -76,7 +78,7 @@ fun ChatDetailsActionsItem(onSendClicked: (text: String) -> Unit) {
                 )
             },
             trailingIcon = {
-                androidx.compose.animation.AnimatedVisibility(
+                AnimatedVisibility(
                     visible = true,
                     enter = fadeIn(),
                     exit = fadeOut()
@@ -84,23 +86,24 @@ fun ChatDetailsActionsItem(onSendClicked: (text: String) -> Unit) {
 
                     Icon(
                         modifier = Modifier
-                            .size(26.dp)
-                            .background(color = Color.Transparent, shape = CircleShape)
+                            .size(32.dp)
+                            .background(color = primaryColor(), shape = CircleShape)
                             .clip(CircleShape)
-
-                            //    .clickable { updateActionsViewMode.invoke(ActionsViewMode.AttachmentWithSendButton) }
-                            .padding(4.dp),
-                        imageVector = ImageVector.vectorResource(id = R.drawable.ic_chevron_left),
+                            .clickable {
+                                onSendClicked(text)
+                                text = ""
+                            }
+                            .padding(8.dp),
+                        imageVector = ImageVector.vectorResource(id = R.drawable.ic_send),
                         contentDescription = "show attach button",
-                        tint = MaterialTheme.colorScheme.inversePrimary
+                        tint = Color.Yellow
                     )
                 }
             },
 
-            shape = Shapes().medium,
+            shape = MaterialTheme.shapes.medium,
             contentPadding = PaddingValues(vertical = 16.dp, horizontal = 16.dp),
-
-            )
+        )
 
 
     }
