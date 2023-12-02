@@ -16,13 +16,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.Start
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.trianglz.chatbot.modules.chat.presentation.models.ChatUIModel
 
 @Composable
-fun OtherTextMessageItem(chatUIModel: ChatUIModel) {
+fun OtherTextMessageItem(
+    chatUIModel: ChatUIModel,
+    botChatColor: () -> Color,
+    botBackgroundColor: () -> Color
+) {
     val bubbleModifier = Modifier
         .graphicsLayer {
             //shape = MessageShape(10.dp.toPx(), BubbleDirection.Start)
@@ -44,15 +49,14 @@ fun OtherTextMessageItem(chatUIModel: ChatUIModel) {
                 .fillMaxWidth(0.8f)
                 .wrapContentWidth(align = Start)
                 .then(chatModifier)
-                .background(MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(10.dp))
-                .clip(RoundedCornerShape(10.dp))
+                .background(botBackgroundColor(), shape = MaterialTheme.shapes.medium)
+                .clip(MaterialTheme.shapes.medium)
                 .padding(contentPadding),
         ) {
             Text(
                 text = chatUIModel.content ?: "",
-                style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.primaryContainer),
+                style = MaterialTheme.typography.bodyMedium.copy(color = botChatColor()),
                 textAlign = TextAlign.Start,
-
                 )
 
         }
