@@ -22,7 +22,11 @@ import com.trianglz.chatbot.modules.chat.presentation.models.ChatUIModel
 
 
 @Composable
-fun MeTextMessageItem(chatUIModel: ChatUIModel) {
+fun MeTextMessageItem(
+    chatUIModel: ChatUIModel,
+    userChatColor: () -> Color,
+    userBackgroundColor: () -> Color
+) {
     val bubbleModifier = Modifier
         .graphicsLayer {
             // shape = MessageShape(10.dp.toPx(), BubbleDirection.End)
@@ -41,13 +45,13 @@ fun MeTextMessageItem(chatUIModel: ChatUIModel) {
         Spacer(modifier = Modifier.fillMaxWidth(0.2f))
         Column(
             modifier = chatModifier
-                .background(MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(10.dp))
-                .clip(RoundedCornerShape(10.dp))
+                .background(userBackgroundColor(), shape = MaterialTheme.shapes.medium)
+                .clip(MaterialTheme.shapes.medium)
                 .padding(contentPadding),
         ) {
             Text(
                 text = chatUIModel.content ?: "",
-                style = MaterialTheme.typography.bodyMedium.copy(color = Color.White),
+                style = MaterialTheme.typography.bodyMedium.copy(color = userChatColor()),
                 textAlign = TextAlign.Start,
             )
 
