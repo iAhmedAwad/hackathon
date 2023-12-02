@@ -19,10 +19,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.example.chatbot_sdk.modules.chat.presentation.models.MessageUIModel
+import com.trianglz.chatbot.modules.chat.presentation.models.ChatUIModel
 
 @Composable
-fun OtherTextMessageItem(messageUIModel: MessageUIModel) {
+fun OtherTextMessageItem(chatUIModel: ChatUIModel) {
     val bubbleModifier = Modifier
         .graphicsLayer {
             //shape = MessageShape(10.dp.toPx(), BubbleDirection.Start)
@@ -49,7 +49,7 @@ fun OtherTextMessageItem(messageUIModel: MessageUIModel) {
                 .padding(contentPadding),
         ) {
             Text(
-                text = messageUIModel.content ?: "",
+                text = chatUIModel.content ?: "",
                 style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.primaryContainer),
                 textAlign = TextAlign.Start,
 
