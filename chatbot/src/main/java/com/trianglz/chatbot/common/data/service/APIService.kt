@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit
 
 object APIService {
 
-    private const val BASE_URL = "https://9c11-156-194-48-168.ngrok-free.app/"
+    private const val BASE_URL = "https://f908-41-40-18-85.ngrok-free.app/"
 
     private val okHttp = OkHttpClient.Builder().addNetworkInterceptor(StethoInterceptor())
         .addInterceptor(HttpLoggingInterceptor().apply {
