@@ -14,19 +14,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.trianglz.chatbot.common.SDK
-import com.trianglz.chatbot.common.SDK.userBackgroundColor
 import com.trianglz.chatbot.modules.home.ChatBotActivity
 import com.trianglz.hackathon.ui.theme.HackathonTheme
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         SDK.init(
             primaryColor = Color.Red,
             userChatColor = Color.White,
-            botChatColor =Color.White,
+            botChatColor = Color.White,
             botBackgroundColor = Color.Red,
             userBackgroundColor = Color.Gray
         )
