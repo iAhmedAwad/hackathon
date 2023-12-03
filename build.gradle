@@ -2,7 +2,6 @@
 
 buildscript {
     ext.kotlin_version = "1.9.0"
-    ext.dagger_version = '2.47'
     ext.plugin_version = '8.1.0'
 
     ext {
@@ -11,7 +10,6 @@ buildscript {
 
     //endregion
     dependencies {
-        classpath "com.google.dagger:hilt-android-gradle-plugin:$dagger_version"
         classpath "com.android.tools.build:gradle:$plugin_version"
         classpath 'com.google.firebase:perf-plugin:1.4.2'
     }
