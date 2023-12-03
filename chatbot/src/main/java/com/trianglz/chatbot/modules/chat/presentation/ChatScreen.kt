@@ -16,16 +16,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.chatbot_sdk.modules.chat.domain.models.enum.SenderType
 import com.trianglz.chatbot.common.SDK
 import com.trianglz.chatbot.modules.chat.presentation.composables.ChatScreenContent
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun ChatScreen(
-    viewModel: ChatScreenViewModel = hiltViewModel()
-) {
+fun ChatScreen() {
+
+    val viewModel = remember {
+
+        ChatScreenViewModel()
+    }
 
     val chatList = remember {
         derivedStateOf {
