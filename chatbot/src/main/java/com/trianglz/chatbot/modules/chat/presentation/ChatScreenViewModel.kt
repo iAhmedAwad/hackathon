@@ -11,16 +11,15 @@ import com.trianglz.chatbot.modules.chat.domain.usecase.SendMessageUseCase
 import com.trianglz.chatbot.modules.chat.presentation.mapper.toUI
 import com.trianglz.chatbot.modules.chat.presentation.models.ChatUIModel
 import com.trianglz.chatbot.modules.chat.presentation.models.LoadingState
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class ChatScreenViewModel @Inject constructor(private val sendMessageUseCase: SendMessageUseCase) :
+
+class ChatScreenViewModel :
     ViewModel() {
 
+    private val sendMessageUseCase = SendMessageUseCase()
     val loadingState: MutableState<LoadingState> = mutableStateOf(LoadingState.Idle)
 
 
@@ -64,27 +63,4 @@ class ChatScreenViewModel @Inject constructor(private val sendMessageUseCase: Se
     private fun setDoneLoading() {
         loadingState.value = LoadingState.Idle
     }
-
-
-    private fun getChatList(): List<ChatUIModel> {
-
-        val list = mutableListOf<ChatUIModel>()
-
-        list.apply {
-//            add(ChatUIModel(id = "adfgh", content = "Hello 1", type = SenderType.ME))
-//            add(ChatUIModel(id = "adghw", content = "Hello 1", type = SenderType.OTHER))
-//            add(ChatUIModel(id = "addfgh", content = "Hello 1", type = SenderType.ME))
-//            add(ChatUIModel(id = "afghs", content = "Hello 1", type = SenderType.OTHER))
-//            add(ChatUIModel(id = "asfdgxg", content = "Hello 1", type = SenderType.ME))
-//            add(ChatUIModel(id = "kvba", content = "Hello 1", type = SenderType.OTHER))
-//            add(ChatUIModel(id = "cxvbsa", content = "Hello 1", type = SenderType.ME))
-//            add(ChatUIModel(id = "ogxcvba", content = "Hello 1", type = SenderType.OTHER))
-//            add(ChatUIModel(id = "avxcvbgf", content = "Hello 1", type = SenderType.ME))
-        }
-
-        return list
-
-    }
-
-
 }
