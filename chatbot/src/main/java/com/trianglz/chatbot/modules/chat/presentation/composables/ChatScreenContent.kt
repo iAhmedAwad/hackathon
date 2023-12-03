@@ -81,7 +81,7 @@ fun ScreenHeader(background: () -> Color) {
     ) {
 
         Text(text = stringResource(id = R.string.finish), modifier = Modifier.padding(horizontal = 20.dp).clickable {
-            (context as? ChatBotActivity)?.finish()
+            //(context as? ChatBotActivity)?.finish()
         }, color = Color.White)
     }
 }

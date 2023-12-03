@@ -27,7 +27,7 @@ class ChatBotActivity : ComponentActivity() {
                     modifier = Modifier
                         .fillMaxSize()
                         .clickable {
-                            startActivity(Intent(this, ChatBotActivity::class.java))
+                            //startActivity(Intent(this, ChatBotActivity::class.java))
                         },
                     color = MaterialTheme.colorScheme.background
                 ) {
