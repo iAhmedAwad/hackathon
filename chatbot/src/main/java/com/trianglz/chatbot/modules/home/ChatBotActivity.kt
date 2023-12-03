@@ -11,14 +11,12 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.trianglz.chatbot.modules.chat.presentation.ChatScreen
 import com.trianglz.chatbot.ui.theme.ChatBotTheme
-import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * @author Awad for TrianglZ
  * Created 11/29/2023 at 1:45 PM
  */
 
-@AndroidEntryPoint
 class ChatBotActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
